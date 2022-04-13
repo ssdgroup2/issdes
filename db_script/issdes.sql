@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (302003)
-# Created: 13 April 2022 12:29:49 CEST
+# Created: 13 April 2022 13:05:47 CEST
 # Encoding: Unicode (UTF-8)
 #
 
@@ -52,7 +52,7 @@ CREATE TABLE `datauser` (
   `authgroups` varchar(60) DEFAULT NULL COMMENT 'Can contain zero to 20 2 digit numbers that represent groups the user could belong to. This provides a possible 99 unique groups.  Seperate each group identifier with a comma simplify the function retrieving membership. ',
   PRIMARY KEY (`userid`),
   UNIQUE KEY `useraccessid_UNIQUE` (`useraccessid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `storedfiles` (
@@ -106,7 +106,11 @@ UNLOCK TABLES;
 
 LOCK TABLES `datauser` WRITE;
 INSERT INTO `datauser` (`userid`, `userforename`, `usersurname`, `userdisplayname`, `useraccessid`, `useragency`, `authgroups`) VALUES 
-	(1,'Gurkan','Huray','Gurkan Huray','EU999G99n','Europe','19');
+	(1,'Gurkan','Huray','Gurkan Huray','EU999G99n','Europe','14'),
+	(3,'Michael','Geiger','Michael Geiger','EU777M77l','Europe','14'),
+	(4,'Zihaad','Khan','Zihaad Khan','EU222Z22d','Europe','14'),
+	(5,'Asheoshla','Kigbu','Asheoshla Kigbu','EU333A33a','Europe','14'),
+	(6,'Austin','Mundy','Austin Mundy','US111A11n','US','11');
 UNLOCK TABLES;
 
 
@@ -116,7 +120,11 @@ UNLOCK TABLES;
 
 LOCK TABLES `userauthns` WRITE;
 INSERT INTO `userauthns` (`id`, `userpasswd`, `userlocked`, `forcepwdchange`, `activestatus`, `passwdchange`, `userregistration`) VALUES 
-	(1,'pbkdf2:sha256:260000$yOrdsR2iLO47Mm19$aec704c7e33d306e179f5ef9117134e6fd5e39b9e9a476d02ba1961e4c0a8a22',0,0,1,NULL,'2022-04-12 22:28:25');
+	(1,'pbkdf2:sha256:260000$yOrdsR2iLO47Mm19$aec704c7e33d306e179f5ef9117134e6fd5e39b9e9a476d02ba1961e4c0a8a22',0,0,1,NULL,'2022-04-12 22:28:25'),
+	(3,'pbkdf2:sha256:260000$t7ugpmmL6XzJtaGw$59e20ba2083aa9e3d4446521fad2142189ff91e598d9274ff17e77f8e592892b',0,0,1,NULL,'2022-04-13 12:55:55'),
+	(4,'pbkdf2:sha256:260000$cPRKi70vAX4mjutJ$0f271be4cf6890b8516cff02b5ba18191f68322cfdd0b10554ed621b0e53b189',0,0,1,NULL,'2022-04-13 13:00:11'),
+	(5,'pbkdf2:sha256:260000$4Lpl8PlH9Po9t1hN$4a2fa4f2482ab4caae526627dfdc86c606b8892fdba2e9f3035796cdedfb5aae',0,0,1,NULL,'2022-04-13 13:02:33'),
+	(6,'pbkdf2:sha256:260000$ZjyKNJCvbKilHpKA$90d20ab5b42d262c757e9afc613f6f82b90c2024428e0cabd3e35cc6fae13241',0,0,1,NULL,'2022-04-13 13:04:25');
 UNLOCK TABLES;
 
 
@@ -135,5 +143,5 @@ SET SQL_MODE = @ORIG_SQL_MODE;
 
 
 
-# Export Finished: 13 April 2022 12:29:49 CEST
+# Export Finished: 13 April 2022 13:05:47 CEST
 
