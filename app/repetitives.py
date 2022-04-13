@@ -1,4 +1,4 @@
-#!bin/env python3
+# !bin/env python3
 # Author(s): cryptopal85
 # Version history: April 07 2022 - Initialising main structure,
 #                                - parsing capability for dbmodel and custom SQL queries

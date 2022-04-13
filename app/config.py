@@ -1,4 +1,4 @@
-#!bin/env python3
+# !bin/env python3
 # Author(s): cryptopal85
 # Version history: April 09 2022 - Initialising app context
 #
