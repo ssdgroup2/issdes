@@ -50,14 +50,14 @@ def checkuseragency(agency):
 	if agency.lower() not in agencylist:
 		return int(99)
 	if agency.lower() == 'europe':
-		return int(19)
-	elif agency.lower() == 'us':
 		return int(14)
-	elif agency.lower() == 'canada':
-		return int(15)
-	elif agency.lower() == 'japan':
-		return int(12)
-	elif agency.lower() == 'russia':
+	elif agency.lower() == 'us':
 		return int(11)
+	elif agency.lower() == 'canada':
+		return int(19)
+	elif agency.lower() == 'japan':
+		return int(15)
+	elif agency.lower() == 'russia':
+		return int(12)
 	else:
 		return(99)
