@@ -1,0 +1,8 @@
+{
+  "cc.aeron.nova-flake8.checkMode" : "onChange",
+  "cc.aeron.nova-flake8.executablePath" : "\/Users\/gurkanhuray\/.pyenv\/versions\/3.10.2\/envs\/iss-des-3.10.2\/bin\/flake8",
+  "python.interpreter" : "~\/.pyenv\/versions\/iss-des-3.10.2\/bin\/python",
+  "workspace.art_style" : 0,
+  "workspace.color" : 2,
+  "workspace.name" : "issdes"
+}

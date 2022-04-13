@@ -1,0 +1,17 @@
+{
+  "name": "issdes",
+  "version": "1.0.0",
+  "description": "The International Space Station - Data Exchange System",
+  "main": "/app/templates/index.html",
+  "author": "cryptopal85",
+  "license": "MIT",
+  "scripts": {
+    "bulma-build": "node-sass -x ./app/static/sass/bulma.scss ./app/static/css/bulma.css",
+    "bulma-css": "yarn run bulma-build --watch",
+    "bulma-watch": "yarn run bulma-css"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.3",
+    "node-sass": "^7.0.1"
+  }
+}

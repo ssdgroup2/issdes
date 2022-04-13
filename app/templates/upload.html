@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="columns is-centered">
+		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
+			<h3 class="title">ISS DES - File Upload</h3>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="notification is-warning">
+					{{ messages[0] }}
+				</div>
+				{% endif %}
+			{% endwith %}
+			<p class="has-text-info py-4 has-text-justified"> Uploaded files will be assigned to account {{ useraccessid }} before sharing within the groups of {{ useraccessid }} is member</p>
+			
+			<form class="box" method="POST" action="/file-up-2" enctype="multipart/form-data">
+				<div class="field has-text-centered">
+					
+					<figure class="image container is-48x48">
+						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
+					</figure>
+				</div>
+				
+				<div class="box">
+					<div class="field">
+						<div class="label">Keywords or Metadata tagging</div>
+						<div class="control">
+							<input class="input is-normal" type="text" name="fileup-keyword-tag" placeholder="List here keywords or tags to use in search filtering" autofocus="">
+						</div>
+					</div>
+					<div class="label">Select file & type</div>
+					<div class="field is-grouped">
+						<div class="control is-pulled-left">
+							<div class="file">
+								<input type="file" name="fileup">
+							</div>
+						</div>
+						<div class="control is-pulled-right">
+							<div class="select">
+								<select name="uploadedfiletype">
+									<option value="zip">archive file: ZIP</option>
+									<option value="docx">word file: DOCX</option>
+									<option value="xlsx">excel file: XLSX</option>
+									<option value="jpeg">image file: JPEG</option>
+									<option value="jpg">image file: JPG</option>
+									<option value="svg">image file: SVG</option>
+									<option value="pdf">document file: PDF</option>
+									<option value="txt">text/data file: TXT</option>
+									<option value="csv">text/data file: CSV</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<button class="button is-fullwidth is-dark- is-outlined">Upload File</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

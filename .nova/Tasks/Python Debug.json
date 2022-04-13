@@ -1,0 +1,12 @@
+{
+  "buildBeforeRunning" : true,
+  "extension" : {
+    "identifier" : "panic.Python",
+    "name" : "Python"
+  },
+  "extensionTemplate" : "pythonDebug",
+  "extensionValues" : {
+    "python.debug.jinja" : true,
+    "python.debug.script" : "app\/app.py"
+  }
+}

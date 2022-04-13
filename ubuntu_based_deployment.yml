@@ -1,0 +1,128 @@
+# https://ubuntu.com/server/docs/install/autoinstall-reference
+
+- name: Get host info
+  hosts: localhost
+  gather_facts: True
+  tasks:
+    # Install required software packages
+    - name: Adding HTTP software
+      become: yes
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        name: '{{ item }}'
+        state: latest
+      # register: stat ntp install
+      loop:
+        - python3-pip
+        - ntp
+        - ntpdate
+        - tcpdump
+        - htop
+        - nginx
+        - snapd
+        
+    # application admin ID
+    - name: adding admin ID
+      become: yes
+      user:
+        name: issadm
+        comment: administrator account for ISS DES server
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        
+    # confirm packages properly installed
+    - name: get installed packages list
+      package_facts:
+        manager: apt
+      when: ansible_os_family == 'Debian'
+        
+    # restart NTP service
+    - name: read new config
+      become: yes
+      systemd:
+        name: ntp
+        state: stopped
+      when: "'ntp' in ansible_facts.packages"
+      
+    # restart NTP
+    - name: restart ntp
+      become: yes
+      systemd:
+        name: ntp
+        state: started
+        enabled: yes
+      when: "'ntp' in ansible_facts.packages"
+      
+    ## PIP requirements
+    - name: install flask
+      become: yes
+      pip:
+        executable: pip3
+        name: flask
+        state: latest
+        
+    # flask SQL Alchemy
+    - name: install flask sqlalchemy
+      become: yes
+      pip:
+        executable: pip3
+        name: flask-sqlalchemy
+        state: latest
+        
+    # flask login
+    - name: install flask login
+      become: yes
+      pip:
+        executable: pip3
+        name: flask-login
+        state: latest
+        
+    # flask database packages
+    - name: install flask database packages
+      become: yes
+      pip:
+        executable: pip3
+        name: mysql-connector-python
+        state: latest
+        
+    # env variable parsing
+    - name: install pythin environ packages
+      become: yes
+      pip:
+        executable: pip3
+        name: python-dotenv
+        state: latest
+        
+    # log transport
+    - name: install syslog python client
+      become: yes
+      pip:
+        executable: pip3
+        name: syslog-py
+        state: latest
+        
+    # gunicorn server for flask app
+    - name: install gunicorn
+      become: yes
+      pip:
+        executable: pip3
+        name: gunicorn
+        state: latest
+        
+    # install lets encrypt
+    - name: installing lets encrypt
+      become: yes
+      snap:
+        name: certbot
+        classic: yes
+    #
+    - name: creating symlink
+      become: yes
+      file:
+        src: /snap/bin/certbot
+        dest: /usr/bin/certbot
+        state: link
+        owner: www-data
+        group: www-data

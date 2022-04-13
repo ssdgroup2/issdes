@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ISS DES</title>
+	<meta name="author" content="cryptopal85">
+	<meta name="The International Space Station - Data Exchange System" content="">
+	<!-- version history March 29 2022: ISS DES app login page initial commit -->
+	<!-- version history April 04 2022: moved to Bulma CSS -->
+	<!-- version history April 05 2022: added flask html templates base.html -->
+
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link href="/static/css/bulma.css" rel="stylesheet">
+	<link href="/static/css/custom.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<section class="hero is-primary is-fullheight">
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-centered">
+					<div class="column is-5-tablet is-4-desktop is-3-widescreen">
+						<form class="box" method="POST" action="/login">
+							<div class="field has-text-centered">
+								
+								<figure class="image container is-48x48">
+									<img class="is-rounded" src="/static/media/login-page.svg">
+								</figure>
+							</div>
+							<div class="field">
+								<label class="label">User ID</label>
+								<div class="control has-icons-left">
+									<input class="input" type="text" placeholder="EU321v54z">
+									<span class="icon is-small is-left">
+										<i class="fa-regular fa-user-astronaut"></i>
+									</span>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Password</label>
+								<div class="control has-icons-left">
+									<input class="input" type="password" placeholder="******">
+									<span class="icon is-small is-left">
+										<i class="fa-regular fa-lock"></i>
+									</span>
+								</div>
+							</div>
+							<div class="field">
+								<button class="button is-fullwidth is-dark is-outlined">Login</button>
+							</div>
+						</form>
+						
+						<div class="container modal-wrapper" x-data="{ modalOpen: false }">
+							
+							<p><button class="button is-fullwidth is-dark" @click="modalOpen = true">Notice</button></p>
+							
+							<div class="modal" x-bind:class="{ 'is-active': modalOpen }">
+								<div class="modal-background"></div>
+								<div class="modal-card">
+									<header class="modal-card-head">
+										<p class="modal-card-title">Notice</p>
+										<button class="delete" aria-label="close" @click="modalOpen = false"></button>
+									</header>
+									<section class="modal-card-body">
+										<div class="content has-text-dark">
+											<h3>Acceptable Use Policy</h3>
+											<p>By using this application you agree the ISS's AUP</p>
+											<ol>
+												<li>placeholder 1</li>
+												<li>placeholder 2</li>
+												<li>placeholder 3</li>
+											</ol>
+											
+											<h3>GDPR</h3>
+											<p>By using this application you consent processing the following information</p>
+											<ol>
+												<li>placeholder 1</li>
+												<li>placeholder 2</li>
+												<li>placeholder 3</li>
+											</ol>
+										</div>
+									</section>
+									<footer class="modal-card-foot">
+										<button class="button" @click="modalOpen = false">Ok</button>
+									</footer>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="columns is-centered">
+		<div class="column is-5-tablet is-4-desktop is-3-widescreen">
+			<form class="box" method="POST" action="/login">
+				<div class="field has-text-centered">
+					
+					<figure class="image container is-48x48">
+						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
+					</figure>
+				</div>
+				<!-- Flask message flashing based on certain checks/controls - https://flask.palletsprojects.com/en/2.1.x/patterns/flashing/ -->
+				<div class="box">
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					<div class="notification is-warning">
+						{{ messages[0] }}
+					</div>
+					{% endif %}
+					{% endwith %}
+				</div>
+				<div class="field">
+					<label class="label">User ID</label>
+					<div class="control has-icons-left">
+						<input class="input" type="text" placeholder="EU321v54z">
+						<span class="icon is-small is-left">
+							<i class="fa-regular fa-user-astronaut"></i>
+						</span>
+					</div>
+				</div>
+				<div class="field">
+					<label class="label">Password</label>
+					<div class="control has-icons-left">
+						<input class="input" type="password" placeholder="******">
+						<span class="icon is-small is-left">
+							<i class="fa-regular fa-lock"></i>
+						</span>
+					</div>
+				</div>
+				<div class="field">
+					<button class="button is-fullwidth is-dark is-outlined">Login</button>
+				</div>
+			</form>
+			
+			<div class="container modal-wrapper" x-data="{ modalOpen: false }">
+				
+				<p><button class="button is-fullwidth is-dark" @click="modalOpen = true">Notice</button></p>
+				
+				<div class="modal" x-bind:class="{ 'is-active': modalOpen }">
+					<div class="modal-background"></div>
+					<div class="modal-card">
+						<header class="modal-card-head">
+							<p class="modal-card-title">Notice</p>
+							<button class="delete" aria-label="close" @click="modalOpen = false"></button>
+						</header>
+						<section class="modal-card-body">
+							<div class="content has-text-dark">
+								<h3>Acceptable Use Policy</h3>
+								<p>By using this application you agree the ISS's AUP</p>
+								<ol>
+									<li>placeholder 1</li>
+									<li>placeholder 2</li>
+									<li>placeholder 3</li>
+								</ol>
+								
+								<h3>GDPR</h3>
+								<p>By using this application you consent processing the following information</p>
+								<ol>
+									<li>placeholder 1</li>
+									<li>placeholder 2</li>
+									<li>placeholder 3</li>
+								</ol>
+							</div>
+						</section>
+						<footer class="modal-card-foot">
+							<button class="button" @click="modalOpen = false">Ok</button>
+						</footer>
+					</div>
+				</div>
+			</div>
+			
+			<div class="column is-5-tablet is-4-desktop is-3-widescreen">
+				<div class="box">
+					{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						<div class="notification is-info">
+							{{ messages[0] }}
+						</div>
+						{% endif %}
+					{% endwith %}
+				</div>
+			</div>
+			
+			<div class="column is-5-tablet is-4-desktop is-3-widescreen">
+				<div class="box">
+					{% if current_user.is_authenticated %}
+						{{current_user.id}}
+					{% endif %}
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+{% endblock %}
