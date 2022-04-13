@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (302003)
-# Created: 12 April 2022 20:06:15 CEST
+# Created: 13 April 2022 12:29:49 CEST
 # Encoding: Unicode (UTF-8)
 #
 
@@ -52,7 +52,7 @@ CREATE TABLE `datauser` (
   `authgroups` varchar(60) DEFAULT NULL COMMENT 'Can contain zero to 20 2 digit numbers that represent groups the user could belong to. This provides a possible 99 unique groups.  Seperate each group identifier with a comma simplify the function retrieving membership. ',
   PRIMARY KEY (`userid`),
   UNIQUE KEY `useraccessid_UNIQUE` (`useraccessid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `storedfiles` (
@@ -105,6 +105,8 @@ UNLOCK TABLES;
 
 
 LOCK TABLES `datauser` WRITE;
+INSERT INTO `datauser` (`userid`, `userforename`, `usersurname`, `userdisplayname`, `useraccessid`, `useragency`, `authgroups`) VALUES 
+	(1,'Gurkan','Huray','Gurkan Huray','EU999G99n','Europe','19');
 UNLOCK TABLES;
 
 
@@ -113,6 +115,8 @@ UNLOCK TABLES;
 
 
 LOCK TABLES `userauthns` WRITE;
+INSERT INTO `userauthns` (`id`, `userpasswd`, `userlocked`, `forcepwdchange`, `activestatus`, `passwdchange`, `userregistration`) VALUES 
+	(1,'pbkdf2:sha256:260000$yOrdsR2iLO47Mm19$aec704c7e33d306e179f5ef9117134e6fd5e39b9e9a476d02ba1961e4c0a8a22',0,0,1,NULL,'2022-04-12 22:28:25');
 UNLOCK TABLES;
 
 
@@ -131,5 +135,5 @@ SET SQL_MODE = @ORIG_SQL_MODE;
 
 
 
-# Export Finished: 12 April 2022 20:06:15 CEST
+# Export Finished: 13 April 2022 12:29:49 CEST
 
