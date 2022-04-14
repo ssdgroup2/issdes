@@ -6,3 +6,4 @@ mysql_connector_repackaged==0.3.1
 pysyslogclient==0.1.1
 python-dotenv==0.20.0
 Werkzeug==2.1.1
+gunicorn==20.1.0
