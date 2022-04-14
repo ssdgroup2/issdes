@@ -21,14 +21,14 @@ db = SQLAlchemy()
 
 def getconnectiondata():
 	condatalist = []
-	db = environ.get('dbinstance')
+	issdes = environ.get('dbinstance')
 	username = environ.get('dbuser')
 	cred = environ.get('dbcred')
 	host = environ.get('dbhost')
-	if not db:
+	if not issdes:
 		print("Incorrect or missing info: database instance name")
 	else:
-		condatalist.append(db)
+		condatalist.append(issdes)
 	if not username:
 		print("Incorrect or missing info: database user name")
 	else:
@@ -54,7 +54,7 @@ def newdburi(connlist):
 	pwd = connlist[2]
 	host = connlist[3]
 	dbinst = connlist[0]
-	dburi = "mysql+mysqlconnector://{}:{}@{}:25060/{}".format(user, pwd, host, dbinst)
+	dburi = "mysql+mysqlconnector://{}:{}@{}:3306/{}".format(user, pwd, host, dbinst)
 	return dburi
 
 
