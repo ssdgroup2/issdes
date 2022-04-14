@@ -16,11 +16,11 @@ from markupsafe import escape
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from os import environ, path
-from . import db, getconnectiondata, newdburi
-from . dbmodel import DataUser, User, DataGroup
+from .db import db, getconnectiondata, newdburi
+from .dbmodel import DataUser, User, DataGroup
 import io
 # other custom functions and module classes
-from . repetitives import getauthsfg, getauthsfilesql, getauthsfiles, newresultsdict, getfiledatasql, getfiledata, getmimetype, testfileownersql, testfileownership, getgroupdetails, newsharedgroups, updatesharedgroupssql, updatesharedgrp, testfsradio, getfileextension, testfileextension, getcurdate, getnewuuid, newfileupload, getfiledeletesql, deletefilerecord, newlogmsg, newlogheader
+from .repetitives import getauthsfg, getauthsfilesql, getauthsfiles, newresultsdict, getfiledatasql, getfiledata, getmimetype, testfileownersql, testfileownership, getgroupdetails, newsharedgroups, updatesharedgroupssql, updatesharedgrp, testfsradio, getfileextension, testfileextension, getcurdate, getnewuuid, newfileupload, getfiledeletesql, deletefilerecord, newlogmsg, newlogheader
 
 
 app = Blueprint('app', __name__)
@@ -191,7 +191,7 @@ def processupload():
 	# move metadata into database
 	filecreate = getcurdate()
 	fileuuid = getnewuuid()
-	uploadsql = """INSERT INTO store(uuid_hex, filename, filetype, filedata, fileowner, filecreate, filesize, keywords_tags) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+	uploadsql = """INSERT INTO storedfiles(uuid_hex,filename,filetype,filedata,fileowner,filecreate,filesize,keywords_tags) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
 	valuetuple = (fileuuid, newfilesecname, fluptype, filedata, uid, filecreate, filesize, flupkeytag)
 	dbcondata = getconnectiondata()
 	resultslist = newfileupload(dbcondata, uploadsql, valuetuple)
