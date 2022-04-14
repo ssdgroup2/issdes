@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="columns is-centered">
+		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
+			<h3 class="title has-text-centered">Authorised Access</h3>
+			
+			<form class="box" method="POST" action="/search-download-2">
+				<div class="field has-text-centered">
+					
+					<figure class="image container is-48x48">
+						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
+					</figure>
+				</div>
+				
+				<div class="box">
+					<div class="field">	
+						<div class="control">
+							<!-- what are the nbsps? https://www.w3schools.com/html/html_entities.asp -->
+							<p>file name &nbsp; &nbsp; keywords/tags &nbsp; &nbsp; creation date &nbsp; &nbsp; file type &nbsp; &nbsp; file size</p>
+							{% for fileuuid, metadata in asfiledict.items() %}
+								<input type="radio" name="fileselection" value="{{ fileuuid }}"> {{ metadata }} <label class="radio"></label>
+							{% endfor %}
+							<p>&nbsp;</p>
+							<button class="button is-fullwidth is-dark is-outlined">Proceed</button>
+						</div>
+					</div>
+					
+					<div class="field">
+						<p>auto fill</p>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

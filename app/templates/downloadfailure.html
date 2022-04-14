@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="columns is-centered">
+		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
+			<h3 class="title">Download Failure</h3>
+			
+			<form class="box">
+				<div class="field has-text-centered">
+					
+					<figure class="image container is-48x48">
+						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
+					</figure>
+				</div>
+				
+				<div class="box">
+					<div class="field">
+						<p>{{ tempprint }}
+							Something went wrong while downloading file, contact the ISS Ground Centre</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

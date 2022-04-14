@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="columns is-centered">
+		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
+			<h3 class="title has-text-centered">ISS DES - File Sharing</h3>
+			
+			<form class="box" method="POST" action="/share-2">
+				<div class="field has-text-centered">
+					
+					<figure class="image container is-48x48">
+						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
+					</figure>
+				</div>
+				
+				<div class="box">
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					<div class="notification is-warning">
+						{{ messages[0] }}
+					</div>
+					{% endif %}
+					{% endwith %}
+				</div>
+				
+				<div class="box">
+					<p> You are granted to access to the following groups, including ownership of the following file. Thus, you can grant access to any of the following groups listed below by using the appropriate check box </p>
+					
+					<input type="hidden" name="ukn2" value="{{ ukn }}">
+					{% for gid, gdesc in presgroups %}
+					<input type="checkbox" name="sharedgroups" value="{{ gid }}"> <label> {{ gdesc }} </label>
+					{% endfor %}
+					
+					<p>&nbsp;</p>
+					<p class="has-text-info">Please select the groups to share the files and use the Update button</p>
+					<button class="button is-fullwidth is-dark is-outlined">Update</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
