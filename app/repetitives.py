@@ -14,10 +14,10 @@
 # static HTML views.
 
 
-import datetime, mysql.connector, uuid, string
+import datetime, uuid, string
 # define and access database - https://flask.palletsprojects.com/en/2.1.x/tutorial/database/
-from . import db, dbconnectalt
-from . dbmodel import DataUser, User, DataGroup
+from .db import dbconnectalt
+from .dbmodel import DataGroup
 
 
 ##### Parse Data #####
@@ -321,6 +321,7 @@ def testuserstrps(ustr):
 # The following function confirms the radio buttons
 # on the static HTML views are used to select files
 
+
 def testfsradio(rb1, rb2):
 	if (not isinstance(rb1, str)) and (not isinstance(rb2, str)):  # https://docs.python.org/3.10/library/functions.html#isinstance
 		msg = "Please repeat the search and do not forget to select one of the available radio buttons"
@@ -336,8 +337,8 @@ def testfsradio(rb1, rb2):
 		return msg
 	else:
 		return None
-	
-	
+
+
 def testfschkbx(cblist):
 	if len(cblist) == 0:
 		msg = "This file won't be share with any groups from now on"
