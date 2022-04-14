@@ -191,7 +191,7 @@ def processupload():
 	# move metadata into database
 	filecreate = getcurdate()
 	fileuuid = getnewuuid()
-	uploadsql = ''' INSERT INTO store(uuid_hex, filename, filetype, filedata, fileowner, filecreate, filesize, keywords_tags) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) '''
+	uploadsql = """INSERT INTO store(uuid_hex, filename, filetype, filedata, fileowner, filecreate, filesize, keywords_tags) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
 	valuetuple = (fileuuid, newfilesecname, fluptype, filedata, uid, filecreate, filesize, flupkeytag)
 	dbcondata = getconnectiondata()
 	resultslist = newfileupload(dbcondata, uploadsql, valuetuple)
