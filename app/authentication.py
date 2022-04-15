@@ -10,15 +10,11 @@
 # Flask/login_reqired used to protect all views from unauthorised access
 
 
-from ast import Str
-from crypt import methods
-import flask, logging
-from flask import Blueprint, render_template, redirect, url_for, flash, request, current_app
+from flask import Blueprint, redirect, url_for, flash, request, current_app
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import check_password_hash
-from . import db
-from . dbmodel import User, DataUser
-from . repetitives import testuserstrps, newlogheader, newlogmsg
+from .dbmodel import User, DataUser
+from .repetitives import testuserstrps, newlogheader, newlogmsg
 
 
 authentication = Blueprint('authentication', __name__)

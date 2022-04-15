@@ -4,7 +4,8 @@
 #                                - building authentication - preparing routing and html templates
 #                  April 06 2022 - building CRUD functionalities
 #                  April 07 2022 - building CRUD functionalities and polishing
-#                  April 12 2022 - fixed routes and views
+#                  April 12 2022 - fixing routes and views
+#                  April 15 2022 - fixing upload function and routes
 #
 # Remarks: app.py is a main block that will be used routing the requests such as
 # viewing, sharing, uploading files, etc. to appropriate URLs.
