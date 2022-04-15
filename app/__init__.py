@@ -3,7 +3,8 @@
 # Version history: April 09 2022 - Initialising main structure
 #                                - https://flask.palletsprojects.com/en/2.1.x/appcontext/
 #                                - https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/
-#                  April 12 2022 - re-structring - fixed a logic flaw
+#                  April 12 2022 - re-structring
+#                  April 15 2022 - moving db-related codes under db.py module
 
 
 from flask import Flask
