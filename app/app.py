@@ -373,11 +373,12 @@ def updateuser():
 		userdisplay['Space Agency Membership'] = thisdatauser.useragency
 		userdisplay['First Name'] = thisdatauser.userforename
 		userdisplay['Surname'] = thisdatauser.usersurname
+
 	thisaccessid = request.form.get('aid')
 	# validate session aid (access ID)
 	oldpassword = request.form.get('pwd')
 	newpassword = request.form.get('pwd2')
 	print(oldpassword)
 	print(newpassword)
-	flash(" The account {} password has been changed successfully".format(thisaccessid))
+	flash("The account {} password has been changed successfully".format(thisaccessid))
 	return render_template('user.html', udict=userdisplay)
