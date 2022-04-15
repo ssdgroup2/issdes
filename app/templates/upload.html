@@ -3,8 +3,10 @@
 
 <div class="container">
 	<div class="columns is-centered">
-		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
-			<h3 class="title">ISS DES - File Upload</h3>
+		<div class="column is-4-tablet is-6-desktop is-6-widescreen">
+			<div class="box has-text-centered has-text-weight-semibold">
+				<p>ISS DES - File Upload</p>
+			</div>
 			{% with messages = get_flashed_messages() %}
 				{% if messages %}
 				<div class="notification is-warning">
@@ -12,31 +14,26 @@
 				</div>
 				{% endif %}
 			{% endwith %}
-			<p class="has-text-info py-4 has-text-justified"> Uploaded files will be assigned to account {{ useraccessid }} before sharing within the groups of {{ useraccessid }} is member</p>
 			
 			<form class="box" method="POST" action="/file-up-1" enctype=multipart/form-data>
 				<div class="field has-text-centered">
-					
-					<figure class="image container is-48x48">
-						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
-					</figure>
-				</div>
+					<p class="block has-text-left has-text-weight-medium"> Note: Uploaded files will be assigned to account {{ useraccessid }} before sharing within the groups of {{ useraccessid }} is member</p>
 				
 				<div class="box">
 					<div class="field">
-						<div class="label">Keywords or Metadata tagging</div>
+						<div class="label has-text-left">Keywords & Tags</div>
 						<div class="control">
 							<input class="input is-normal" type="text" name="fileup-keyword-tag" placeholder="List here keywords or tags to use in search filtering" autofocus="">
 						</div>
 					</div>
-					<div class="label">Select file & type</div>
+					<div class="label has-text-left">Select File & Type</div>
 					<div class="field is-grouped">
-						<div class="control is-pulled-left">
+						<div class="control is-pulled-left pt-3">
 							<div class="file">
 								<input type="file" name="fileup">
 							</div>
 						</div>
-						<div class="control is-pulled-right">
+						<div class="control is-pulled-right ml-auto">
 							<div class="select">
 								<select name="uploadedfiletype">
 									<option value="zip">archive file: ZIP</option>
@@ -52,7 +49,11 @@
 							</div>
 						</div>
 					</div>
-					<button class="button is-fullwidth is-dark- is-outlined">Upload File</button>
+					
+					<div class="field">
+					<button class="button is-fullwidth is-dark is-outlined">Upload File</button>
+					</div>
+					
 				</div>
 			</form>
 		</div>

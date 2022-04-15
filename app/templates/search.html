@@ -3,8 +3,10 @@
 
 <div class="container">
 	<div class="columns is-centered">
-		<div class="column is-4-tablet is-6-desktop is-5-widescreen">
-			<h3 class="title has-text-centered">ISS DES - Search</h3>
+		<div class="column is-4-tablet is-6-desktop is-6-widescreen">
+			<div class="box has-text-centered has-text-weight-semibold">
+				<p>ISS DES - Search</p>
+			</div>
 			{% with messages = get_flashed_messages() %}
 				{% if messages %}
 					<div class="notification is-warning">
@@ -12,17 +14,15 @@
 					</div>
 				{% endif %}
 			{% endwith %}
-			<p> Note, the authorised access to files are only available for the following groups {{grouplist}} or for {{aid}} ownership</p>
 			
 			<form class="box" method="POST" action="/search-download-1">
-				<div class="field has-text-centered">
-					
-					<figure class="image container is-48x48">
-						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
-					</figure>
+				
+				<div class="block has-text-weight-medium">
+					<p> Note: The authorised access to files are only available for group(s) {{ grouplist }} or ID(s) {{ aid }} ownership</p>
 				</div>
 				
 				<div class="box">
+					
 					<div class="field">
 						<div class="label">File Name</div>
 						<div class="control">
@@ -30,9 +30,9 @@
 						</div>
 					</div>
 					<div class="field">
-						<div class="label">keyword or meta data tag</div>
+						<div class="label">Keywords & Tags</div>
 						<div class="control">
-							<input class="input is-normal" type="text" name="keyword-tag" placeholder="partial or full keyword" autofocus=""/>
+							<input class="input is-normal" type="text" name="keyword-tag" placeholder="partial or full keyword/tag" autofocus=""/>
 						</div>
 					</div>
 					<div class="field">
@@ -54,7 +54,10 @@
 						</div>
 					</div>
 					
-					<button class="button is-fullwidth is-dark- is-outlined">Search for files</button>
+					<div class="field">
+						<button class="button is-fullwidth is-dark is-outlined">Search for files</button>
+					</div>
+					
 				</div>
 			</form>
 		</div>

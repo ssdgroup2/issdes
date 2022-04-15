@@ -16,7 +16,6 @@
 	<link href="{{ url_for('static', filename='css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -26,9 +25,9 @@
 			<nav class="navbar is-transparent is-spaced" role="navigation" aria-label="main navigation">
 				<div class="container">
 					<div class="navbar-brand">
-						<a class="navbar-item">
-							<img src="{{ url_for('static', filename='media/base-navbrand.svg') }}" alt="ISS DES" width="24" height="24">
-						</a>
+						<figure class="image container is-48x48">
+							<img class="is-rounded" src="{{ url_for('static', filename='media/base-navbrand.svg') }}">
+						</figure>
 						<a role="button" class="navbar-burger burger" aria-label="Menu" aria-expanded="false" data-target="navbarTopMain">
 							<span aria-hidden="true"></span>
 							<span aria-hidden="true"></span>
