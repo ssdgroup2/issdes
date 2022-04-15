@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div class="columns is-centered">
-		<div class="column is-4-tablet is-4-desktop is-4-widescreen">
+		<div class="column is-4-tablet is-5-desktop is-5-widescreen">
 			<form class="box" method="POST" action="/login">
 				<div class="field has-text-centered">
 					
@@ -12,7 +12,7 @@
 					</figure>
 				</div>
 				<!-- Flask message flashing based on certain checks/controls - https://flask.palletsprojects.com/en/2.1.x/patterns/flashing/ -->
-				<div class="box">
+				<div class="block">
 					{% with messages = get_flashed_messages() %}
 					{% if messages %}
 					<div class="notification is-warning">
@@ -58,18 +58,19 @@
 						<section class="modal-card-body">
 							<div class="content has-text-dark">
 								<h3>Acceptable Use Policy</h3>
-								<p>By using this application you agree the ISS's AUP</p>
+								<p>By using this application you agree not to</p>
 								<ol>
-									<li>placeholder 1</li>
-									<li>placeholder 2</li>
-									<li>placeholder 3</li>
+									<li>store, access, transfer, download, upload, communicate or create any fraudulent, harassing, embarrassing, sexually explicit, profane, obscene, intimidating, libellous, slanderous, threatening, abusive, defamatory, or otherwise unlawful or inappropriate materials</li>
+									<li>download, store or transmit material that infringe any copyright, trademark or other proprietary right</li>
+									<li>post or transmit proprietary or confidential information related to clients, suppliers, vendors, allied parties, or other third parties</li>
+									<li>download or distribute pirated software or data</li>
 								</ol>
 								
 								<h3>GDPR</h3>
 								<p>By using this application you consent processing the following information</p>
 								<ol>
-									<li>placeholder 1</li>
-									<li>placeholder 2</li>
+									<li>Forename and Surname</li>
+									<li>ISS DES Access ID</li>
 									<li>placeholder 3</li>
 								</ol>
 							</div>
