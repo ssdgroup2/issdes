@@ -220,6 +220,7 @@ def presentshare():
 			usergroupdict = dict()
 		else:
 			asglist = getauthsfg(asglist)
+			usergroupdict = getgroupdetails(asglist)
 		fileid = request.args.get('ukn')
 		# check if user at least member of one group
 		if len(usergroupdict) > 0:
