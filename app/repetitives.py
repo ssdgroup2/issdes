@@ -203,9 +203,9 @@ def getgroupdetails(asglist):
 	
 
 # The following function is a database insert function to upload files
-def newfileupload(dbcontlist, upsql, upval):
+def newfileupload(dbconlist, upsql, upval):
 	try:
-		dbhandle = dbconnectalt(dbcontlist)
+		dbhandle = dbconnectalt(dbconlist)
 		thiscur = dbhandle.cursor()
 		result = thiscur.execute(upsql, upval)
 		dbhandle.commit()
