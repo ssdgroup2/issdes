@@ -249,7 +249,7 @@ def processshare():
 
 
 ##### Download #####
-@app.route('/share-download-2', methods=['POST'])
+@app.route('/share-download-2', methods=['GET', 'POST'])
 @login_required
 def getdownload():
 	# We need to confirm the state of radio buttons whether they are checked or not
@@ -312,9 +312,9 @@ def getdownload():
 
 
 # Avoid potential IDOR attacks and not allow 'GET' method
-@app.route('/search-download-2', methods=['GET'])
-def presentdlredirect():
-	return render_template('index.html')
+# @app.route('/search-download-2', methods=['GET'])
+# def presentdlredirect():
+#	return render_template('index.html')
 
 
 ##### Delete #####
