@@ -6,6 +6,7 @@
 #                                - polish and sanity check
 # Version history: April 09 2022 - fixed spotted typos
 # Version history: April 13 2022 - fixed the code
+# Version history: April 17 2022 - fixed getauthsfilesql
 #
 # Remarks: Numerous data processing stages need to be repeated within different part of
 # the system. Thus, instead of coding those functions each time under the relevant part of the code
@@ -43,7 +44,7 @@ def getauthsfg(glstr):
 
 def getauthsfilesql(uid, authgroups, ftype, fname=None, fkeytag=None):
 	# selecting file meta-data from the database
-	sqlselect = "select uuid_hex,filename,keywords_tags,filetype,filecreate,filesize from storedfiles where"
+	sqlselect = """SELECT uuid_hex,filename,keywords_tags,filetype,filecreate,filesize FROM storedfiles WHERE"""
 	agsql = "("  # authgroups
 	grpcnt = len(authgroups)  # count groups
 	for i in range(grpcnt):  # https://snakify.org/en/lessons/for_loop_range/
@@ -51,24 +52,24 @@ def getauthsfilesql(uid, authgroups, ftype, fname=None, fkeytag=None):
 			ag = "authgroups like '%{}%' or ".format(authgroups[i])
 			agsql = agsql + ag
 		else:
-			ag = "authgroups like '%{}'".format(authgroups[i])
+			ag = "authgroups like '%{}' ".format(authgroups[i])
 			agsql = agsql + ag
 	agsql = agsql + " ))"
 	# Search capability by filetype
 	if ftype == "any":
 		ftsql = "filetype is not null"
 	else:
-		ftsql = "filetype='{}'".format(ftype)
+		ftsql = " filetype='{}' ".format(ftype)
 		
 	# where clause
-	sqlwhere = ftsql + "and (fileowner={} or".format(uid)
+	sqlwhere = ftsql + " and (fileowner={} or ".format(uid)
 	sqlwhere = sqlwhere + agsql
 	
 	# additional file name or keyword arguments for where clause
 	if (len(fname) > 0) and (len(fkeytag) == 0):
-		sqlwhere = sqlwhere + "and (filename like '%{}%'".format(fname)
+		sqlwhere = sqlwhere + "and (filename like '%{}%')".format(fname)
 	if (len(fname) == 0) and (len(fkeytag) > 0):
-		sqlwhere = sqlwhere + " and (keywords_tags like '%{}%'".format(fkeytag)
+		sqlwhere = sqlwhere + " and (keywords_tags like '%{}%')".format(fkeytag)
 	if (len(fname) > 0) and (len(fkeytag) > 0):
 		sqlwhere = sqlwhere + " and (filename like '%{}%' or keywords_tags like '%{}%')".format(fname, fkeytag)
 		
