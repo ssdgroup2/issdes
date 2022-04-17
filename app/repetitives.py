@@ -83,7 +83,7 @@ def getauthsfilesql(uid, authgroups, ftype, fname=None, fkeytag=None):
 # access particular file.
 # where clauses and multiple conditions : https://www.brainbell.com/tutorials/MySQL/Combining_WHERE_Clauses.htm
 def getfiledatasql(uid, authgroups, fileuuid):
-	sqlselect = "select filetype,filename,filedata, from storedfiles"
+	sqlselect = """SELECT filetype,filename,filedata FROM storedfiles"""
 	sqlwhere = "where uuid_hex='{}' and ( fileowner={} or".format(fileuuid, uid)
 	authgroups = getauthsfg(authgroups)
 	agsql = "("
@@ -108,7 +108,7 @@ def testfileownersql(fileuuid):
 		return None
 	else:
 		# https://simple.wikipedia.org/wiki/Hexadecimal
-		sqlselect = "select fileowner,filename from storedfiles where uuid_hex='{}'".format(fileuuid)
+		sqlselect = """SELECT fileowner,filename FROM storedfiles WHERE uuid_hex='{}'""".format(fileuuid)
 		return sqlselect
 		
 
@@ -118,12 +118,12 @@ def testfileownersql(fileuuid):
 
 def updatesharedgroupssql(grouplist, fileuuid, fileowner):
 	asglist = ','.join([str(x) for x in grouplist])
-	updgrpsql = "update storedfiles set authgroups='{}' where uuid_hex='{}' and fileowner={}".format(asglist, fileuuid, int(fileowner))
+	updgrpsql = """UPDATE storedfiles SET authgroups='{}' WHERE uuid_hex='{}' and fileowner={}""".format(asglist, fileuuid, int(fileowner))
 	return updgrpsql
 
 
 def getfiledeletesql(uid, fileuuid):
-	deletesql = "delete from storedfiles where uuid_hex='{}' and fileowner='{}'".format(fileuuid, uid)
+	deletesql = """DELETE FROM storedfiles WHERE uuid_hex='{}' and fileowner='{}'""".format(fileuuid, uid)
 	return deletesql
 	
 
