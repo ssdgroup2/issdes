@@ -249,7 +249,7 @@ def processshare():
 
 
 ##### Download #####
-@app.route('/asfiledict', methods=['POST'])
+@app.route('/share-download-2', methods=['POST'])
 @login_required
 def getdownload():
 	# We need to confirm the state of radio buttons whether they are checked or not
