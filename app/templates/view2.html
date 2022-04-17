@@ -8,9 +8,9 @@
 				<p>ISS DES - Search Results</p>
 			</div>
 			
-			<form class="box" method="GET" action="/search-download-2">
+			<form method="POST" action="/search-download-2">
 				
-				<div class="field">
+				<div class="box">
 					{% with messages = get_flashed_messages() %}
 					{% if messages %}
 						<div class="notification is-warning">
