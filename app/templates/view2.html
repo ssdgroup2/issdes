@@ -8,50 +8,47 @@
 				<p>ISS DES - Search Results</p>
 			</div>
 			
-			<form method="POST" action="/search-download-2">
+			<div class="field">
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<div class="notification is-warning">
+						{{ messages[0] }}
+					</div>
+				{% endif %}
+				{% endwith %}
+			</div>
+			
+			<div class="box">
+				<p class="has-text-weight-semibold has-text-dark">The following files found based on the given criteria</p>
+				<p class=""> filename: {{ searchfname }} &nbsp;&nbsp;, keywords or tagging: {{ searchkeytag }} &nbsp;&nbsp;, file type: {{ searchtype }} </p>
+				<p>&nbsp;</p>
+				<p class="has-text-weight-semibold has-text-dark">Note:</p>
+				<p class="">The following files are available to download based on {{ grouplist }} - Also, only access granted files to or uploaded by the user {{ aid }} available to share</p>
+			</div>
+			
+			<form class="box" method="POST" action="/search-download-2">
+				<p class="has-text-weight-semibold">Files available to download:</p>
+				<p class=""> file name &nbsp; &nbsp; keywords/tags &nbsp; &nbsp; creation date &nbsp; &nbsp; file type &nbsp; &nbsp; file size</p>
 				
-				<div class="box">
-					{% with messages = get_flashed_messages() %}
-					{% if messages %}
-						<div class="notification is-warning">
-							{{ messages[0] }}
-						</div>
-					{% endif %}
-					{% endwith %}
+				<div class="field">
+				<div class="control">
+					{% for fileuuid, metadata in asfiledict.items() %}
+					<label class="radio"><input type="radio" name="fileselection" value="{{ fileuuid }}"> {{ metadata }}</label> <br>
+					{% endfor %}
 				</div>
 				
-				<div class="box">
-					<p class="has-text-weight-semibold has-text-dark">The following files found based on the given criteria</p>
-					<p class=""> filename: {{ searchfname }} &nbsp;&nbsp;, keywords or tagging: {{ searchkeytag }} &nbsp;&nbsp;, file type: {{ searchtype }} </p>
-					<p>&nbsp;</p>
-					<p class="has-text-weight-semibold has-text-dark">Note:</p>
-					<p class="">The following files are available to download based on {{ grouplist }} - Also, only access granted files to or uploaded by the user {{ aid }} available to share</p>
-				</div>
-					
-				<div class="box">
-					<p class="has-text-weight-semibold">Files available to download:</p>
-					<p class=""> file name &nbsp; &nbsp; keywords/tags &nbsp; &nbsp; creation date &nbsp; &nbsp; file type &nbsp; &nbsp; file size</p>
-					<div class="field">
-						<div class="control">
-							{% for fileuuid, metadata in asfiledict.items() %}
-							<label class="radio"><input type="radio" name="fileselection" value="{{ fileuuid }}"> {{ metadata }}</label> <br>
-							{% endfor %}
-						</div>
+				<div class="field">
+					<div class="control">
+						<p class="has-text-weight-semibold">Note:</p>
+						<p class="">Use radio buttons below to perform desired actions on the selected file. If you do not see the file, please change search criteria and try again</p>
+						<label class="radio"></label><input type="radio" name="actionrequest" value="download">Download file</label>
+						<label class="radio"></label><input type="radio" name="actionrequest" value="sharefile">Share file</label>
+						<label class="radio"></label><input type="radio" name="actionrequest" value="deletefile">Delete file</label>
 					</div>
-					<div class="field">
-						<div class="control">
-							<p class="has-text-weight-semibold">Note:</p>
-							<p class="">Use radio buttons below to perform desired actions on the selected file. If you do not see the file, please change search criteria and try again</p>
-							<label class="radio"></label><input type="radio" name="actionrequest" value="download">Download file</label>
-							<label class="radio"></label><input type="radio" name="actionrequest" value="sharefile">Share file</label>
-							<label class="radio"></label><input type="radio" name="actionrequest" value="deletefile">Delete file</label>
-						</div>
-						
-						<button class="button is-fullwidth is-centered is-dark is-outlined">Proceed</button>
-					
-					</div>
+					<button class="button is-fullwidth is-centered is-dark is-outlined">Proceed</button>
 				</div>
 			</form>
+			
 		</div>
 	</div>
 </div>
