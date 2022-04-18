@@ -3,9 +3,12 @@
 # Version history: April 09 2022 - Initialising main structure
 #                  April 13 2022 - fixed syntax errors
 #
-# Remarks:
-# https://docs.python.org/3/library/syslog.html
-# https://stackoverflow.com/questions/12523044/how-can-i-tail-a-log-file-in-python
+# Remarks (Python Software Foundation, N.D. A; Stack Overflow, N.D.)
+#
+### References ###
+# Python Software Foundation (N.D. A) Unix syslog libary routlines. Available from: https://docs.python.org/3/library/syslog.html [Accesses 18 April 2022].
+# Stack Overflow (N.D.) How can I tail a log file in Python? Available from: https://stackoverflow.com/questions/12523044/how-can-i-tail-a-log-file-in-python [Accesses 18 April 2022].
+# Python Software Foundation (N.D. B) Classes. Available from: https://docs.python.org/3.10/tutorial/classes.html#generators [Accessed 18 April 2022].
 
 import time, os, datetime, re, json
 # external lib for transporting logs
@@ -15,7 +18,9 @@ from ast import literal_eval  # for converting string/dictionary
 
 ##### Log Operations #####
 # The following function will process and put all events on daily basis to a file
-
+# Python Software Foundation (N.D. A) Unix syslog libary routlines. Available from: https://docs.python.org/3/library/syslog.html [Accesses 18 April 2022].
+# Stack Overflow (N.D.) How can I tail a log file in Python? Available from: https://stackoverflow.com/questions/12523044/how-can-i-tail-a-log-file-in-python [Accesses 18 April 2022].
+# Python Software Foundation (N.D. B) Classes. Available from: https://docs.python.org/3.10/tutorial/classes.html#generators [Accessed 18 April 2022].
 
 def updatesecevent(eventline):
 	datestamp = datetime.datetime.now().strftime("%Y%m%d")
@@ -90,8 +95,7 @@ def filterline(thisline):
 	return
 	
 
-# Realtime monitoring for Flask logging output - uses Generators
-# https://docs.python.org/3.10/tutorial/classes.html#generators
+# Realtime monitoring for Flask logging output - uses Generators (Python Software Foundation, N.D. B)
 
 def followfile(applog):
 	applog.seek(0, os.SEEK_END)
