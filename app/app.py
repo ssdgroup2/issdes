@@ -17,7 +17,7 @@
 # OWASP (N.D.) Path Traversal. Available from: https://owasp.org/www-community/attacks/Path_Traversal [Accessed 18 April 2022].
 # OWASP Cheat Sheet Series Team (N.D.) Insecure Direct Object Reference Prevention Cheat Sheet. Available from: https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html [Accessed 18 April 2022].
 
-		import re
+import re
 from flask import Blueprint, render_template, redirect, url_for, request, flash, send_file, current_app
 from markupsafe import escape
 from flask_login import login_required, current_user
