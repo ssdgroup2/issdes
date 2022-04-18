@@ -31,7 +31,7 @@ The following python libraries are required:
 
 The code structure is as follows:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/codestructure.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/codestructure.png)
 
 `app.py` - This is the main application used to route searching, sharing, uploading and downloading requests to the appropriate URL's. Front end forms are displayed using html templates obtained from Bulma (2022).
 
