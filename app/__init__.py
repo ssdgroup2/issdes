@@ -7,7 +7,7 @@
 #
 ### References ###
 # Flask (N.D. A) The Application Context. Available from: https://flask.palletsprojects.com/en/2.1.x/appcontext/ [Accessed 18 April 2022].
-# Flask (N.D. B) Applicaiton Factories. Available from: https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/ [Accessed 18 April 2022].
+# Flask (N.D. B) Application Factories. Available from: https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/ [Accessed 18 April 2022].
 
 from flask import Flask
 from os import environ
