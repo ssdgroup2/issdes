@@ -14,9 +14,25 @@
 # also allow us to easily reuse these custom functions in 'app.py and authentication.py'
 # static HTML views.
 
+### References ###
+# Amos, D. (N.D.) Numbers in Python. Available from: https://realpython.com/python-numbers/#integers [Accesssed 18 April 2022].
+# Brain Bell (N.D.) Multiple WHERE with AND  OR Operators. Available from: https://www.brainbell.com/tutorials/MySQL/Combining_WHERE_Clauses.htm [Accesses 18 April 2022].
+# Flask (N.D.) Define and Acess the Database. Available from: https://flask.palletsprojects.com/en/2.1.x/tutorial/database/ [Accessed 18 April 2022].
+# Kapeli (N.D.) Pyhton Format Strings. Available from: https://kapeli.com/cheat_sheets/Python_Format_Strings.docset/Contents/Resources/Documents/index#//dash_ref_Member%20and%20Element%20Access/Entry/Access%20element%20by%20index/0 [Accesss 18 April 2022].
+# Python Software Foundation (N.D. A) sqlite3 - DB-API 2.0 interface for SQLite databases. Available from: https://docs.python.org/3.10/library/sqlite3.html#sqlite3.Connection.commit [Accessed 18 April 2022].
+# Python Software Foundation (N.D. B) dateime - Basic date and times types. Available from: https://docs.python.org/3.10/library/datetime.html#datetime.datetime.strftime [Accesses 18 April 2022].
+# Python Software Foundation (N.D. C) Built-in Types. Available from: https://docs.python.org/3.10/library/stdtypes.html#str.strip [Accessesd 18 April 2022].
+# Python Software Foundation (N.D. D) Built-in Functions. Available from: https://docs.python.org/3.10/library/functions.html#isinstance [Accessed 18 April 2022].
+# Python Software Foundation (N.D. E) UUID objects according to RFC 4122. Available from: https://docs.python.org/3.10/library/uuid.html#module-uuid [Accesses 18 April 2022].
+# Rossum, G. (2013) PEP 8 - Style Guide for Python Code. Available from: https://peps.python.org/pep-0008/#programming-recommendations [Accessed 18 April 2022].
+# Smith, A. (N.D.) How to convert a comma-seperated string to a list in Python. Available from: https://www.adamsmith.haus/python/answers/how-to-convert-a-comma-separated-string-to-a-list-in-python [Accessed 18 April 2022].
+# Snakify (N.D.) For loop with range. Available from: https://snakify.org/en/lessons/for_loop_range/ [Accessed 18 April 2022].
+# SQL Alchemy (N.D.) Query API. Available from: https://docs.sqlalchemy.org/en/14/orm/query.html [Accessed 18 April 2022].
+# Tutorialspoint (N.D.) Python MySQL - Cursor Object. Available from: https://www.tutorialspoint.com/python_data_access/python_mysql_cursor_object.htm [Accessed 18 April 2022].
+
 
 import datetime, uuid, string
-# define and access database - https://flask.palletsprojects.com/en/2.1.x/tutorial/database/
+# define and access database (Flask, N.D.)
 from .db import dbconnectalt
 from .dbmodel import DataGroup
 
@@ -24,8 +40,8 @@ from .dbmodel import DataGroup
 ##### Parse Data #####
 
 # The following function parses grouplist strings for DataUsers, including
-# converting CSV-formatted data into a list
-# https://www.adamsmith.haus/python/answers/how-to-convert-a-comma-separated-string-to-a-list-in-python
+# converting CSV-formatted data into a list (Smith, A., N.D.)
+
 
 def getauthsfg(glstr):
 	# providing string version of object
@@ -47,7 +63,7 @@ def getauthsfilesql(uid, authgroups, ftype, fname=None, fkeytag=None):
 	sqlselect = """SELECT uuid_hex,filename,keywords_tags,filetype,filecreate,filesize FROM storedfiles WHERE"""
 	agsql = "("  # authgroups
 	grpcnt = len(authgroups)  # count groups
-	for i in range(grpcnt):  # https://snakify.org/en/lessons/for_loop_range/
+	for i in range(grpcnt):  # Explained by Snakify (N.D.)
 		if i < (grpcnt - 1):
 			ag = "authgroups like '%{}%' or ".format(authgroups[i])
 			agsql = agsql + ag
@@ -81,7 +97,7 @@ def getauthsfilesql(uid, authgroups, ftype, fname=None, fkeytag=None):
 # The following function fetches binary blobs and mime types.
 # It does also  validate if authenticated users are authorised to
 # access particular file.
-# where clauses and multiple conditions : https://www.brainbell.com/tutorials/MySQL/Combining_WHERE_Clauses.htm
+# where clauses and multiple conditions (Brain Bell, N.D.)
 def getfiledatasql(uid, authgroups, fileuuid):
 	sqlselect = """SELECT filetype,filename,filedata FROM storedfiles"""
 	sqlwhere = "where uuid_hex='{}' and ( fileowner={} or".format(fileuuid, uid)
@@ -130,14 +146,13 @@ def getfiledeletesql(uid, fileuuid):
 ##### SQL Queries #####
 
 # setting up connection to SQLAlchemy
-# that is needed for queries that use customised SQL statements
-# https://docs.sqlalchemy.org/en/14/orm/query.html
+# that is needed for queries that use customised SQL statements (SQL Alchemy, N.D.)
 
 # The following function leverages connection functions of 'init.py'
 def getauthsfiles(dbconlist, appsql):
 	try:
 		dbhandle = dbconnectalt(dbconlist)
-		thiscur = dbhandle.cursor()  # https://www.tutorialspoint.com/python_data_access/python_mysql_cursor_object.htm
+		thiscur = dbhandle.cursor()  # Explained by Tutorialspoint (N.D.)
 		thiscur.execute(appsql)
 		tuplelist = thiscur.fetchmany(size=15)  # fetch first 15 records
 		dbhandle.close()
@@ -173,7 +188,7 @@ def testfileownership(dbconlist, ownersql):
 		dbhandle.close()
 	except Exception as err:
 		return None
-	return resulttuple  # https://www.python.org/dev/peps/pep-0008/#programming-recommendations
+	return resulttuple  # Explained by Rossum (2013)
 
 
 def updatesharedgrp(dbconlist, shgrpsql):
@@ -181,12 +196,12 @@ def updatesharedgrp(dbconlist, shgrpsql):
 		dbhandle = dbconnectalt(dbconlist)
 		thiscur = dbhandle.cursor()
 		resultcode = thiscur.execute(shgrpsql)
-		dbhandle.commit()  # https://docs.python.org/3.10/library/sqlite3.html#sqlite3.Connection.commit
-		dbhandle.close()  # https://docs.python.org/3.10/library/sqlite3.html#sqlite3.Connection.commit
+		dbhandle.commit()  # Explained by Python Software Foundation (N.D. A)
+		dbhandle.close() 
 	except Exception as err:
 		print(err)
 		return None
-	return resultcode  # https://www.python.org/dev/peps/pep-0008/#programming-recommendations
+	return resultcode  # Explained by Python Software Foundation (N.D. B)
 	
 
 # The following function fetch details of each group end user has authorisation
@@ -195,7 +210,7 @@ def getgroupdetails(asglist):
 	asgroupdetails = dict()
 	for asg in asglist:
 		tmplist = []
-		grouprecord = DataGroup.query.filter_by(groupid=asg).first()  # http://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.Query.first
+		grouprecord = DataGroup.query.filter_by(groupid=asg).first()  # Explained by Amos (N.D.)
 		if grouprecord is not None:
 			tmplist.append(grouprecord.groupname)
 			tmplist.append(grouprecord.groupdesc)
@@ -238,7 +253,7 @@ def newresultsdict(resultlist):
 	filemetadict = dict()
 	if len(resultlist) > 0:
 		for result in resultlist:
-			filedate = result[4].strftime("%Y-m%-%d %H:%M:%S")  # https://docs.python.org/3.10/library/datetime.html#datetime.datetime.strftime
+			filedate = result[4].strftime("%Y-m%-%d %H:%M:%S")  # Explained by Python Software Foundation (N.D. C)
 			if len(result[2]) > 15:
 				keytagdisplay = result [2] [:12] + " ..."
 			else:
@@ -294,7 +309,7 @@ def newsharedgroups(shrgrpdict):
 			gdesc = item[1][1][:27] + "..."
 		else:
 			gdesc = item[1][1]
-		gdetails = "{}: {}".format(gname, gdesc)  # https://kapeli.com/cheat_sheets/Python_Format_Strings.docset/Contents/Resources/Documents/index.html#//dash_ref_Member%20and%20Element%20Access/Entry/Access%20element%20by%20index/0
+		gdetails = "{}: {}".format(gname, gdesc)  # Explained by Kapeli (N.D.)
 		presgrouplist.append((gid, gdetails))
 	return presgrouplist
 	
@@ -308,7 +323,7 @@ def newsharedgroups(shrgrpdict):
 
 
 def testuserstrps(ustr):
-	strpustr = ustr.strip()  # https://docs.python.org/3.10/library/stdtypes.html#str.strip
+	strpustr = ustr.strip()  # Explained by Python Software Foundation (N.D. C)
 	allowlist = string.ascii_letters + string.digits
 	for char in strpustr:
 		if char not in allowlist:
@@ -324,7 +339,7 @@ def testuserstrps(ustr):
 
 
 def testfsradio(rb1, rb2):
-	if (not isinstance(rb1, str)) and (not isinstance(rb2, str)):  # https://docs.python.org/3.10/library/functions.html#isinstance
+	if (not isinstance(rb1, str)) and (not isinstance(rb2, str)):  # Explained by Python Software Foundation (N.D. D)
 		msg = "Please repeat the search and do not forget to select one of the available radio buttons"
 		return msg
 	elif (isinstance(rb1, str)) and (not isinstance(rb2, str)):
@@ -368,7 +383,7 @@ def getcurdate():
 
 # Create UUID on the server side, then send it to database as hex value
 # It can be used in the views and easily converted back and forth
-# uuid4 from Python is used due to Privacy concerns - https://docs.python.org/3.10/library/uuid.html#module-uuid
+# uuid4 from Python is used due to Privacy concerns (Pyhton Software Foundation, N.D. E)
 def getnewuuid():
 	hexuuid = uuid.uuid4().hex
 	return hexuuid
