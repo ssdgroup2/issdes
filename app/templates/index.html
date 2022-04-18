@@ -1,3 +1,6 @@
+<!-- References -->
+<!-- Flask (N.D.) Message Flashing. Available from: https://flask.palletsprojects.com/en/2.1.x/patterns/flashing/ [Accessed 18 April 2022]. -->
+
 {% extends "base.html" %}
 {% block content %}
 
@@ -11,7 +14,7 @@
 						<img class="is-rounded" src="{{ url_for('static', filename='media/login-page.svg') }}">
 					</figure>
 				</div>
-				<!-- Flask message flashing based on certain checks/controls - https://flask.palletsprojects.com/en/2.1.x/patterns/flashing/ -->
+				<!-- Flask message flashing based on certain checks/controls (Flask, N.D.) -->
 				<div class="block">
 					{% with messages = get_flashed_messages() %}
 					{% if messages %}
