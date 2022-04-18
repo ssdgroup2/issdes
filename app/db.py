@@ -1,9 +1,13 @@
 # !bin/env python3
 # Author(s): cryptopal85
-# Version history: April 09 2022 - Initialising main structure
-#                                - https://flask.palletsprojects.com/en/2.1.x/appcontext/
-#                                - https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/
+# Version history: April 09 2022 - Initialising main structure (Flask, N.D. A; Flask, N.D. B)
+#                             
 #                  April 12 2022 - re-structring - fixed a logic flaw
+#
+### References ###
+# Flask (N.D. A) The Application Context. Available from: https://flask.palletsprojects.com/en/2.1.x/appcontext/ [Accessed 18 April 2022].
+# Flask (N.D. B) Application Factories. Available from: https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/ [Accessed 18 April 2022].
+
 
 
 from flask_sqlalchemy import SQLAlchemy
