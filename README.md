@@ -37,7 +37,7 @@ The code structure is as follows:
 
 `authentication.py` - This code is required for authenticating end users as well as performing input validations. When a user's password is entered during the registration process it is encrypted using the werkzeug.security module and stored in a MySQL database with the corresponding user id. Screenshot below:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/dbs1.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/dbs1.png)
 
 In addition, Flask libraries and modules are used to handle user session management. (Flask, N.D.).
 
@@ -57,7 +57,7 @@ In addition, Flask libraries and modules are used to handle user session managem
 
 Files named ***usermanagementutil.py*** and ***makeissdesuser.py*** are used to register users to the system. It is assumed that the CLI will be used to perform user registration. The code is executed as follows: `python3 makeissdesuser.py` and produces the following output:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/userreg.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/userreg.png)
 
 Users are created and placed into AuthGroups allowing only users within an AuthGroup to share files with each other. In the case where a user's profile has been hacked, the attacker would not gain access to files uploaded from other users, minimising the attack surface. The following Authorisation Groups are used:
 
@@ -75,11 +75,11 @@ Once completed the user will be required to save their AccessID and Password. Th
 
 The main application is executed by running: `flask run` and produces the following output:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/flaskoutput.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/flaskoutput.png)
 
 Once successful, the application will be accessible from the web browser on: `http://127.0.0.1:8080`
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/issdesui.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/issdesui.png)
 
 ## Discussion - Design & Coding Differences ##
 
@@ -95,31 +95,31 @@ The final code achieved the CRUD operation requirements, input validations and w
 
 The difference in selected libraries during the design and coding phase are listed below:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/diff_library.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/diff_library.png)
 
 ## Functional Testing Images ##
 
 Nova was used as a code editor with built in extensions for Python, Pylint and Flake8 - this allowed automatic testing and correction:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/nova.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/nova.png)
 
 User Login Screen:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/userlogin.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/userlogin.png)
 
 File Upload Success Screen:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/Fileupload.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/Fileupload.png)
 
 File stored in DB:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/filestored.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/filestored.png)
 
 Search for a File:
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/search1.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/search1.png)
 
-![This is an image](https://github.com/zihaadk/secure-software-development/blob/main/images/search2.png)
+![This is an image](https://github.com/ssdgroup2/issdes/blob/main/images/search2.png)
 
 ## References ##
 
