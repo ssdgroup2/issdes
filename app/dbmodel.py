@@ -5,7 +5,7 @@
 # Explanation what does primary_key is shown by Stack Overflow (N.D.)
 #
 ### References ###
-# Stack Overflow (N.D.) Django: Does "primary_key=True" alos mean "unique"?. Available from: https://stackoverflow.com/questions/58139212/django-does-primary-key-true-also-mean-unique [Accessed 18 April 2022].
+# Stack Overflow (N.D.) Django: Does "primary_key=True" also mean "unique"?. Available from: https://stackoverflow.com/questions/58139212/django-does-primary-key-true-also-mean-unique [Accessed 18 April 2022].
 
 
 from flask_login import UserMixin
